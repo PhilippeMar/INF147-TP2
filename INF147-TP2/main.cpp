@@ -25,13 +25,13 @@ Ecrire description ici:
 ****************************************************************************************/
 
 /* Espace brouillon */
-#define BROUILLON 1
+#define BROUILLON 0
 
 /* Phases du projet */
 #define PHASE_1   0
 #define PHASE_2   0
 #define PHASE_3   0
-#define PHASE_4   0
+#define PHASE_4   1
 #define PHASE_5   0
 #define PHASE_6   0
 
@@ -151,7 +151,7 @@ Ecrire description ici:
 		CRYPT_generer_cle(cle);
 
 		/* Chaîne a encoder */
-		unsigned char message[] = "ecole de technologie superieure";
+		unsigned char message[] = "eCole de technoLogie superieure";
 		int taille = sizeof(message) / sizeof(char) - 1;
 
 		/* Afficher message original */

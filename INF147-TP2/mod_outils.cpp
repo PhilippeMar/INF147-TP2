@@ -52,7 +52,10 @@ void test_OUTILS_obtenir_position_max_dbl(void)
 // Cree une permutation aleatoire d'un tableau 1D avec l'algorithme de Fisher-Yates.
 void OUTILS_melanger(unsigned char* tableau, const unsigned int taille)
 {
-	// TODO
+    for (unsigned int i = (taille-1); i > 1; i--) {
+        unsigned int j = RANDBETWEEN(0,i-1);
+        SWAP_INT(tableau[i], tableau[j]);
+    }
 }
 
 // Trie deux tableaux en etendant le tri du premier aux elements du deuxieme.
@@ -60,7 +63,18 @@ void OUTILS_tri_decroissant_etendu_dbl_uchar(double* tableau_principal,
 											 unsigned char* tableau_secondaire,
 											 const unsigned int taille_tableaux)
 {
-	// TODO
+    unsigned int j;
+
+    for (unsigned int i = 1; i < taille_tableaux; i++)
+    {
+        j = i;
+        while (tableau_principal[j] < tableau_principal[j-1] && j>0)		//on vérifie que le terme a gauche est plus grand
+        {
+            SWAP_DBL(tableau_principal[j], tableau_principal[j - 1]);
+            SWAP_INT(tableau_secondaire[j], tableau_secondaire[j-1]);//on echange la valeur a gauche avec la valeur la plus petite soit, la valeur de droite
+            j--;
+        }
+    }
 }
 
 // Procedure de test pour OUTILS_tri_decroissant_etendu_dbl_uchar.

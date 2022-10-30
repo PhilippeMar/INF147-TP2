@@ -9,7 +9,9 @@
 *                                       CONSTANTES                                       *
 *****************************************************************************************/
 
-#define ASCII_a 97		/* Code ASCII du a pour decalage */
+#define ASCII_a         97		/* Code ASCII du a pour decalage */
+#define ASCII_A         65		/* Code ASCII du A pour decalage */
+#define DELTA_ASCII     (ASCII_a - ASCII_A)
 
 /*****************************************************************************************
 *                                  FONCTIONS PUBLIQUES                                   *

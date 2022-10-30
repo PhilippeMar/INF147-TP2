@@ -21,7 +21,7 @@
                         y = temp; }
 
 /* Macro-fonction qui genere un nombre aleatoire entre a et b inclusivement. */
-#define RANDBETWEEN(a, b) { (a + (unsigned int)rand() % (b - a + 1)) }
+#define RANDBETWEEN(a, b) {(unsigned int) (a + rand() % (b - a + 1)) }
 
 /*****************************************************************************************
 *                                  FONCTIONS PUBLIQUES                                   *
