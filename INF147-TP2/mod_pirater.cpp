@@ -52,7 +52,10 @@ void PIRATER_dechiffrer_cesar(unsigned char* message,
 // Genere l'alphabet trie en ordre decroissant de frequences d'apparition.
 void PIRATER_generer_alphabet_reference(unsigned char* tab_alphabet_ref)
 {
-	// TODO
+    unsigned char alphabet_reference[TAILLE_ALPHABET] = {'e', 'a', 's', 'i', 'n', 't', 'r', 'l', 'u', 'o', 'd', 'c','m','p','g','v','b','f','q','h','x','j','y','k','w','z'};
+    for (int i = 0; i < TAILLE_ALPHABET; i++) {
+        tab_alphabet_ref[i]=alphabet_reference[i];
+    }
 }
 
 // Procedure de test pour PIRATER_generer_alphabet_reference
@@ -67,14 +70,35 @@ void PIRATER_extraire_cle(unsigned char* cle,
 						  unsigned char* message,
 						  const unsigned int taille)
 {
-	// TODO
+	double freq_message[TAILLE_ALPHABET];
+    PIRATER_calculer_frequences(freq_message, message, taille);
+    CRYPT_generer_alphabet(cle);
+
+    OUTILS_tri_decroissant_etendu_dbl_uchar(freq_message, cle, taille);
+
 }
 
 // Implemente une attaque basee sur l'analyse frequentielle.
 void PIRATER_attaque_frequences(unsigned char* message,
 								const unsigned int taille)
 {
-	// TODO
+    unsigned char cle[TAILLE_ALPHABET];
+    PIRATER_extraire_cle(cle, message, TAILLE_ALPHABET);
+
+    unsigned char alphabet_reference[TAILLE_ALPHABET];
+    PIRATER_generer_alphabet_reference(alphabet_reference);
+
+    for (int i = 0; i < taille; i++) {
+        int j = 0;
+        bool est_trouve = false;
+        while (!est_trouve && j < TAILLE_ALPHABET) {
+            if (message[i] == cle [j]){
+                message[i] = alphabet_reference[j];
+                est_trouve = true;
+            }
+            j++;
+        }
+    }
 }
 
 // Remplace une lettre par une autre et vice-versa dans un message.
