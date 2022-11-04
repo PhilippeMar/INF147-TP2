@@ -17,12 +17,28 @@ On y retrouve les sous-programmes suivants :
 *                                  FONCTIONS PUBLIQUES                                   *
 *****************************************************************************************/
 
-// Calculer les frequences d'apparition relatives des lettres de l'alphabet dans un message encode.
-void PIRATER_calculer_frequences(double* tab_frequences,
-								 const unsigned char* message,
-								 const unsigned int taille)
+void PIRATER_calculer_frequences(double* tab_frequences, const unsigned char* message, const unsigned int taille)
 {
-	// TODO
+	unsigned int nbr_lettre = 0;
+	unsigned int lettre1 = 0;
+	unsigned int lettre2 = 0;
+
+	while (lettre1 < taille)
+	{
+		if (isalpha(message[lettre1]) != 0)
+		{
+			tab_frequences[message[lettre1] - ASCII_a]++;
+			nbr_lettre++;
+		}
+		lettre1++;
+	}
+
+	while (lettre2 < TAILLE_ALPHABET)
+	{
+		tab_frequences[lettre2] /= nbr_lettre;
+		lettre2++;
+	}
+	
 }
 
 // Procedure de test pour PIRATER_calculer_frequences.
@@ -43,10 +59,15 @@ void test_PIRATER_calculer_frequences(void)
 }
 
 // Implemente une attaque basee sur l'analyse frequentielle sur le code de Cesar.
-void PIRATER_dechiffrer_cesar(unsigned char* message,
-							  const unsigned int taille)
+void PIRATER_dechiffrer_cesar(unsigned char* message, const unsigned int taille)
 {
-	// TODO
+
+	double deffrichage[TAILLE_ALPHABET] = { 0.0 };
+
+	PIRATER_calculer_frequences(deffrichage, message, taille);
+	unsigned int decalage = OUTILS_obtenir_position_max_dbl(deffrichage, TAILLE_ALPHABET) - (ASCII_e - ASCII_a);
+	CESAR_decrypter(message, taille, decalage);
+
 }
 
 // Genere l'alphabet trie en ordre decroissant de frequences d'apparition.
