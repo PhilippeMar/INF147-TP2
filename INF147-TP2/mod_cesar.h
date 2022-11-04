@@ -2,6 +2,7 @@
 #define _MOD_CESAR_
 
 #include <ctype.h>			/* isalpha */
+#include <math.h>
 
 /*****************************************************************************************
 *                                       CONSTANTES                                       *
