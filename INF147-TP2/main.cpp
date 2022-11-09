@@ -45,7 +45,7 @@ Ecrire description ici:
 	{
 
 		/* Espace brouillon */
-
+        test_OUTILS_tri_decroissant_etendu_dbl_uchar();
 		system("pause");
 		return EXIT_SUCCESS;
 
@@ -189,7 +189,7 @@ Ecrire description ici:
 
 		/* Decoder + afficher */
 		PIRATER_attaque_frequences(message, taille);
-        /*
+/*
 		PIRATER_permuter_lettres(message, taille, 'r', 'l');
 		PIRATER_permuter_lettres(message, taille, 'o', 'c');
 		PIRATER_permuter_lettres(message, taille, 'a', 't');
@@ -203,7 +203,7 @@ Ecrire description ici:
 		PIRATER_permuter_lettres(message, taille, 'x', 'f');
 		PIRATER_permuter_lettres(message, taille, 'x', 'm');
 		PIRATER_permuter_lettres(message, taille, 'x', 'y');
-         */
+*/
 
 		printf("MESSAGE DECRYPTE:\n\n%s\n", message);
 

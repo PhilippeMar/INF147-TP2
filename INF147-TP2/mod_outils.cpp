@@ -68,12 +68,16 @@ void OUTILS_tri_decroissant_etendu_dbl_uchar(double* tableau_principal,
     for (unsigned int i = 1; i < taille_tableaux; i++)
     {
         j = i;
-        while (tableau_principal[j] < tableau_principal[j-1] && j>0)		//on vérifie que le terme a gauche est plus grand
+        while (j>0 && tableau_principal[j] > tableau_principal[j-1] )		//on vérifie que le terme a gauche est plus petit
         {
             SWAP_DBL(tableau_principal[j], tableau_principal[j - 1]);
             SWAP_INT(tableau_secondaire[j], tableau_secondaire[j-1]);//on echange la valeur a gauche avec la valeur la plus petite soit, la valeur de droite
             j--;
         }
+    }
+    for (int i = 0; i < taille_tableaux; i = i + 2)
+    {
+        printf("%.6f -> %c\t%.6f -> %c\n", tableau_principal[i], tableau_secondaire[i], tableau_principal[i+1], tableau_secondaire[i + 1]);
     }
 }
 

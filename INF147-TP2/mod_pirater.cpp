@@ -18,11 +18,30 @@ On y retrouve les sous-programmes suivants :
 *****************************************************************************************/
 
 // Calculer les frequences d'apparition relatives des lettres de l'alphabet dans un message encode.
+//Issu du code de Teano
 void PIRATER_calculer_frequences(double* tab_frequences,
 								 const unsigned char* message,
 								 const unsigned int taille)
 {
-	// TODO
+    unsigned int nbr_lettre = 0;
+    unsigned int lettre1 = 0;
+    unsigned int lettre2 = 0;
+
+    while (lettre1 < taille)
+    {
+        if (isalpha(message[lettre1]) != 0)
+        {
+            tab_frequences[message[lettre1] - ASCII_a]++;
+            nbr_lettre++;
+        }
+        lettre1++;
+    }
+
+    while (lettre2 < TAILLE_ALPHABET)
+    {
+        tab_frequences[lettre2] /= nbr_lettre;
+        lettre2++;
+    }
 }
 
 // Procedure de test pour PIRATER_calculer_frequences.
@@ -70,11 +89,15 @@ void PIRATER_extraire_cle(unsigned char* cle,
 						  unsigned char* message,
 						  const unsigned int taille)
 {
-	double freq_message[TAILLE_ALPHABET];
+	double freq_message[TAILLE_ALPHABET] = { 0. };
     PIRATER_calculer_frequences(freq_message, message, taille);
     CRYPT_generer_alphabet(cle);
+    for (int i = 0; i < TAILLE_ALPHABET; i = i + 2)
+    {
+        printf("%c -> %.4lf\t%c -> %.4lf\n", 'a' + i, freq_message[i], 'a' + i + 1, freq_message[i + 1]);
+    }
 
-    OUTILS_tri_decroissant_etendu_dbl_uchar(freq_message, cle, taille);
+    OUTILS_tri_decroissant_etendu_dbl_uchar(freq_message, cle, TAILLE_ALPHABET);
 
 }
 
@@ -83,10 +106,15 @@ void PIRATER_attaque_frequences(unsigned char* message,
 								const unsigned int taille)
 {
     unsigned char cle[TAILLE_ALPHABET];
-    PIRATER_extraire_cle(cle, message, TAILLE_ALPHABET);
+    PIRATER_extraire_cle(cle, message, taille);
 
     unsigned char alphabet_reference[TAILLE_ALPHABET];
     PIRATER_generer_alphabet_reference(alphabet_reference);
+
+    for (int i = 0; i < TAILLE_ALPHABET; i = i + 2)
+    {
+        printf("%c -> %c\t%c -> %c\n", cle[i], alphabet_reference[i], cle[i + 1], alphabet_reference[i+1]);
+    }
 
     for (int i = 0; i < taille; i++) {
         int j = 0;
@@ -104,10 +132,15 @@ void PIRATER_attaque_frequences(unsigned char* message,
 // Remplace une lettre par une autre et vice-versa dans un message.
 void PIRATER_permuter_lettres(unsigned char* message,
 							  const unsigned int  taille,
-							  const unsigned char premiere_lettre,
-							  const unsigned char deuxieme_lettre)
+                              const unsigned char premiere_lettre,
+                              const unsigned char deuxieme_lettre)
 {
-	// TODO
+    for (int i = 0; i < taille; i++) {
+        if(message[i] == premiere_lettre)
+            message[i] = deuxieme_lettre;
+        else if(message[i] == deuxieme_lettre)
+            message[i] = premiere_lettre;
+    }
 }
 
 // Extrait la cle par analyse frequentielle et l'insere dans un tableau recu en parametre.
