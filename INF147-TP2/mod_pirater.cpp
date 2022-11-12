@@ -114,9 +114,10 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 								   const unsigned int taille_cle)
 {
 	double deffrichage[TAILLE_ALPHABET];
-	unsigned int i = 0;
-	unsigned int j = 0;
-	unsigned int nbr_lettre = 0;
+	unsigned int i;
+	unsigned int j;
+	unsigned int nbr_lettre;
+	unsigned int compte_lettre;
 
 	for (int duration = 0; duration < taille_cle; duration++)
 	{
@@ -128,7 +129,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 		i = 0;
 		j = 0;
 		nbr_lettre = 0;
-		int compte_lettre = 0;
+		compte_lettre = 0;
 
 		while (i < taille_message)
 		{
