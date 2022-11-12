@@ -64,19 +64,25 @@ void VIGENERE_encrypter(unsigned char* message,
 						unsigned char* cle,
 						const unsigned int taille_cle)
 {
-		unsigned char table_de_vigenere[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE];
+	unsigned char table_de_vigenere[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE];
 	VIGENERE_remplir_table_vigenere(table_de_vigenere);
 
+		int k = 0;
+		int compte_lettre = 0;
 
-	int k = 0;
-	while (k < taille_message)
-	{
-		if (isalpha(message[k]) != 0)
+		while (k < taille_message)
 		{
-			message[k] = table_de_vigenere[cle[k % taille_cle] - ASCII_a][message[k] - ASCII_a];
+			if (isalpha(message[k]) != 0)
+			{
+				if (compte_lettre>=taille_cle)
+				{
+					compte_lettre = 0;
+				}
+				message[k] = table_de_vigenere[cle[compte_lettre] - ASCII_a][message[k] - ASCII_a];
+				compte_lettre++;
+			}
+			k++;
 		}
-		k++;
-	}
 }
 
 // Decode un message encode avec le chiffre de Vigenere a partir de sa cle.
@@ -89,16 +95,23 @@ void VIGENERE_decrypter(unsigned char* message,
 	VIGENERE_remplir_table_vigenere(table_de_vigenere);
 
 	int k = 0;
+	int compte_lettre = 0;
+
 	while (k < taille_messsage)
 	{
 		if (isalpha(message[k]) != 0)
 		{
 			int l = 0;
-			while (message[k] != table_de_vigenere[cle[k % taille_cle] - ASCII_a][l])
+			if (compte_lettre >= taille_cle)
+			{
+				compte_lettre = 0;
+			}
+			while (message[k] != table_de_vigenere[cle[compte_lettre] - ASCII_a][l])
 			{
 				l++;
 			}
 			message[k] = table_de_vigenere[0][l];
+			compte_lettre++;
 		}
 		k++;
 	}
