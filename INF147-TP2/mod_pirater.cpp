@@ -113,5 +113,44 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 								   unsigned char* cle,
 								   const unsigned int taille_cle)
 {
-	// TODO
+	double deffrichage[TAILLE_ALPHABET];
+	unsigned int i = 0;
+	unsigned int j = 0;
+	unsigned int nbr_lettre = 0;
+
+	for (int duration = 0; duration < taille_cle; duration++)
+	{
+		for (int reset_deffrichage = 0; reset_deffrichage < TAILLE_ALPHABET; reset_deffrichage++)
+		{
+			deffrichage[reset_deffrichage] = { 0.0 };
+		}
+
+		i = 0;
+		j = 0;
+		nbr_lettre = 0;
+		int compte_lettre = 0;
+
+		while (i < taille_message)
+		{
+			if (isalpha(message[i]) != 0)
+			{
+				if (compte_lettre % taille_cle == 0)
+				{
+					deffrichage[message[i+duration] - ASCII_a]++;
+					nbr_lettre++;
+				}
+					compte_lettre++;			
+			}
+				i++;
+		}
+		while (j < TAILLE_ALPHABET)
+		{
+			deffrichage[j] /= nbr_lettre;
+			j++;
+		}
+
+		unsigned int cle_courante = OUTILS_obtenir_position_max_dbl(deffrichage, TAILLE_ALPHABET) - (ASCII_e - ASCII_a);
+
+		cle[duration] = ASCII_a + cle_courante;
+	}
 }
