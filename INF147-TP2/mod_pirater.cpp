@@ -34,9 +34,12 @@ void PIRATER_calculer_frequences(double* tab_frequences,
 	unsigned int nb_lettre = 0;
 	for (unsigned int i = 0; i < taille; i++)
 	{
-		if (message[i] >= ASCII_a && message[i] <= ASCII_z)
+		if (isalpha(message[i]))
 		{
-			tab_frequences[message[i] - 'a']++;
+			// Lettre minuscule ou majuscule 
+			unsigned char offset_maj = (message[i] >= ASCII_a) ? 0 : 32;
+			// Incrementer le compteur de frequence du charactere et le nombre de lettre
+			tab_frequences[message[i] - 'a' + offset_maj]++;
 			nb_lettre++;
 		}
 	}
@@ -83,7 +86,11 @@ void PIRATER_dechiffrer_cesar(unsigned char* message,
 // Genere l'alphabet trie en ordre decroissant de frequences d'apparition.
 void PIRATER_generer_alphabet_reference(unsigned char* tab_alphabet_ref)
 {
-	// TODO
+	unsigned int alphabet_ref[TAILLE_ALPHABET] = { 'e','a','s','i','n','t','r','l','u','o','d','c','m','p','g','v','b','f','q','h','x','j','y','k','w','z'};
+	for (unsigned int i = 0; i < TAILLE_ALPHABET; i++)
+	{
+		tab_alphabet_ref[i] = alphabet_ref[i];
+	}
 }
 
 // Procedure de test pour PIRATER_generer_alphabet_reference
@@ -98,14 +105,49 @@ void PIRATER_extraire_cle(unsigned char* cle,
 						  unsigned char* message,
 						  const unsigned int taille)
 {
-	// TODO
+	// Calculer la table de frequences
+	double tab_frequences[TAILLE_ALPHABET] = { 0.0 };
+	PIRATER_calculer_frequences(tab_frequences, message, taille);
+
+	// Generation tableau alphabet
+	unsigned char tab_alphabet[TAILLE_ALPHABET];
+	CRYPT_generer_alphabet(tab_alphabet);
+
+	// Trier en fonction du tableau de frequences
+	OUTILS_tri_decroissant_etendu_dbl_uchar(tab_frequences, tab_alphabet, TAILLE_ALPHABET);
+
+	// On retourne la cle
+	for (unsigned int i = 0; i < TAILLE_ALPHABET; i++)
+	{
+		cle[i] = tab_alphabet[i];
+	}
 }
 
 // Implemente une attaque basee sur l'analyse frequentielle.
 void PIRATER_attaque_frequences(unsigned char* message,
 								const unsigned int taille)
 {
-	// TODO
+	//Extraire la cle
+	unsigned char cle[TAILLE_ALPHABET];
+	PIRATER_extraire_cle(cle, message, taille);
+
+	// Importer alphabet de reference
+	unsigned char tab_alphabet_ref[TAILLE_ALPHABET];
+	PIRATER_generer_alphabet_reference(tab_alphabet_ref);
+
+	// Substitution des lettres
+	for (unsigned int i = 0; i < taille; i++)
+	{
+		// Decryption du message avec la cle obtenue
+		for (unsigned int j = 0; j < TAILLE_ALPHABET; j++)
+		{
+			if (message[i] == cle[j])
+			{
+				message[i] = tab_alphabet_ref[j];
+				break;
+			}
+		}
+	}
 }
 
 // Remplace une lettre par une autre et vice-versa dans un message.
@@ -114,7 +156,15 @@ void PIRATER_permuter_lettres(unsigned char* message,
 							  const unsigned char premiere_lettre,
 							  const unsigned char deuxieme_lettre)
 {
-	// TODO
+	for (unsigned int i = 0; i < taille; i++)
+	{
+		// Permute la premiere lettre avec la deuxieme
+		if (message[i] == premiere_lettre)
+			message[i] = deuxieme_lettre;
+		// Permute la deuxieme lettre avec la premiere
+		else if (message[i] == deuxieme_lettre)
+			message[i] = premiere_lettre;
+	}
 }
 
 // Extrait la cle par analyse frequentielle et l'insere dans un tableau recu en parametre.

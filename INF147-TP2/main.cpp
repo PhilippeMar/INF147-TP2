@@ -25,13 +25,13 @@ Ecrire description ici:
 ****************************************************************************************/
 
 /* Espace brouillon */
-#define BROUILLON 1
+#define BROUILLON 0
 
 /* Phases du projet */
 #define PHASE_1   0
 #define PHASE_2   0
 #define PHASE_3   0
-#define PHASE_4   0
+#define PHASE_4   1
 #define PHASE_5   0
 #define PHASE_6   0
 
@@ -45,7 +45,7 @@ Ecrire description ici:
 	{
 
 		/* Espace brouillon */
-
+		
 		system("pause");
 		return EXIT_SUCCESS;
 
@@ -202,6 +202,9 @@ Ecrire description ici:
 		PIRATER_permuter_lettres(message, taille, 'x', 'f');
 		PIRATER_permuter_lettres(message, taille, 'x', 'm');
 		PIRATER_permuter_lettres(message, taille, 'x', 'y');
+
+		PIRATER_permuter_lettres(message, taille, 'p', 'h');
+		PIRATER_permuter_lettres(message, taille, 'r', 'n');
 
 		printf("MESSAGE DECRYPTE:\n\n%s\n", message);
 
