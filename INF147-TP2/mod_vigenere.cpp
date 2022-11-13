@@ -22,13 +22,13 @@ On y retrouve les sous-programmes suivants :
 *****************************************************************************************/
 
 // Insere les valeurs de la table de vigenere dans un tableau 26 x 26 recu en parametres.
-void VIGENERE_remplir_table_vigenere(unsigned char table[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE])
+void VIGENERE_remplir_table_vigenere(unsigned char table_vigenere[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE])
 {
 	for (unsigned int i = 0; i < TAILLE_TABLE_VIGENERE; i++)
 	{
 		for (unsigned int j = 0; j < TAILLE_TABLE_VIGENERE; j++)
 		{
-			table[i][j] = ASCII_a + ((i + j) % 26);
+			table_vigenere[i][j] = ASCII_a + ((i + j) % 26);
 		}
 	}
 }
