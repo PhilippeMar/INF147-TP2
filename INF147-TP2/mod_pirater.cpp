@@ -162,6 +162,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 
 	for (int i = 0; i < taille_cle; i++)
 	{
+		// Initialisation des féruqnces
 		for (int j = 0; j < TAILLE_ALPHABET; j++)
 		{
 			frequence[j] = { 0. };
@@ -191,7 +192,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 			frequence[j] /= nombre_lettre_frequence;
 		}
 
-		//commentaire
+		//Définition du décalage
 		int decalage = (int)OUTILS_obtenir_position_max_dbl(frequence, TAILLE_ALPHABET) - (ASCII_e - ASCII_a);
 		cle[i] = (ASCII_a + decalage);
 	}
