@@ -22,7 +22,20 @@ void PIRATER_calculer_frequences(double* tab_frequences,
 								 const unsigned char* message,
 								 const unsigned int taille)
 {
-	// TODO
+	unsigned int nb_lettre = 0;
+	for (unsigned int i = 0; i < taille; i++)
+	{
+		if (message[i] >= ASCII_a && message[i] <= ASCII_z)
+		{
+			tab_frequences[message[i] - 'a']++;
+			nb_lettre++;
+		}
+	}
+
+	for (unsigned int i = 0; i < TAILLE_ALPHABET; i++)
+	{
+		tab_frequences[i] /= (double)nb_lettre;
+	}
 }
 
 // Procedure de test pour PIRATER_calculer_frequences.
@@ -46,7 +59,16 @@ void test_PIRATER_calculer_frequences(void)
 void PIRATER_dechiffrer_cesar(unsigned char* message,
 							  const unsigned int taille)
 {
-	// TODO
+	// Calculer la table de frequences
+	double tab_frequences[TAILLE_ALPHABET] = { 0.0 };
+	PIRATER_calculer_frequences(tab_frequences, message, taille);
+
+	// Definir le decalage selon la table de frequences
+	int decalage = ((int)OUTILS_obtenir_position_max_dbl(tab_frequences, TAILLE_ALPHABET) - ('e' - ASCII_a)) % TAILLE_ALPHABET;
+	if (decalage < 0) decalage += TAILLE_ALPHABET;
+
+	// Decrypter le message
+	CESAR_decrypter(message, taille, decalage);
 }
 
 // Genere l'alphabet trie en ordre decroissant de frequences d'apparition.
