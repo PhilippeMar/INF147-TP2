@@ -19,24 +19,27 @@ On y retrouve les sous-programmes suivants :
 
 void PIRATER_calculer_frequences(double* tab_frequences, const unsigned char* message, const unsigned int taille)
 {
+	//variables du calcul de frequence
+	//nombre de lettre pour la division de fréquence
 	unsigned int nbr_lettre = 0;
-	unsigned int lettre1 = 0;
-	unsigned int lettre2 = 0;
+	
+	unsigned int i = 0;
+	unsigned int j = 0;
 
-	while (lettre1 < taille)
+	while (i < taille)
 	{
-		if (isalpha(message[lettre1]) != 0)
+		if (isalpha(message[i]) != 0)
 		{
-			tab_frequences[message[lettre1] - ASCII_a]++;
+			tab_frequences[message[i] - ASCII_a]++;
 			nbr_lettre++;
 		}
-		lettre1++;
+		i++;
 	}
 
-	while (lettre2 < TAILLE_ALPHABET)
+	while (j < TAILLE_ALPHABET)
 	{
-		tab_frequences[lettre2] /= nbr_lettre;
-		lettre2++;
+		tab_frequences[j] /= nbr_lettre;
+		j++;
 	}
 	
 }
@@ -61,7 +64,7 @@ void test_PIRATER_calculer_frequences(void)
 // Implemente une attaque basee sur l'analyse frequentielle sur le code de Cesar.
 void PIRATER_dechiffrer_cesar(unsigned char* message, const unsigned int taille)
 {
-
+	//initiation d'un tableau de deffrichage
 	double deffrichage[TAILLE_ALPHABET] = { 0.0 };
 
 	PIRATER_calculer_frequences(deffrichage, message, taille);
@@ -113,11 +116,17 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 								   unsigned char* cle,
 								   const unsigned int taille_cle)
 {
+	//variables de la procedure
+	//initiation du tableau de deffrichage
 	double deffrichage[TAILLE_ALPHABET];
+	
+	//nombre de lettre pour la division de fréquence
+	unsigned int nbr_lettre;
+	//compte les lettres de la cle avant la réinitialisation
+	unsigned int compte_lettre;
+	
 	unsigned int i;
 	unsigned int j;
-	unsigned int nbr_lettre;
-	unsigned int compte_lettre;
 
 	for (int duration = 0; duration < taille_cle; duration++)
 	{
