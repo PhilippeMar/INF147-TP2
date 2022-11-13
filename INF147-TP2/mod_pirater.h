@@ -14,6 +14,7 @@
 *****************************************************************************************/
 
 #define ASCII_a 97			/* Code ASCII du a pour decalage     */
+#define ASCII_e 101			/* Code ASCII du a pour decalage     */
 #define TAILLE_ALPHABET 26	/* Nombre de lettres dans l'alphabet */
 
 /*****************************************************************************************

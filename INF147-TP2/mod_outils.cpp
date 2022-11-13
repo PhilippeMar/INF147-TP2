@@ -25,11 +25,21 @@ void OUTILS_afficher_tableau_1D_uchar(unsigned char* tableau,
 }
 
 // Trouve l'indice de la plus grande valeur dans un tableau de rationnels.
+//Issu du code de Teano
 unsigned int OUTILS_obtenir_position_max_dbl(const double* tableau,
 											 const unsigned int taille)
 {
-	return 0;// Remove this
-	// TODO
+    unsigned int i_max = 0;
+
+    for (int i = 0; i < taille - 1; i++)
+    {
+        if (tableau[i_max] < tableau[i + 1])
+        {
+            i_max = i + 1;
+        }
+    }
+
+    return i_max;
 }
 
 // Procedure de test pour OUTILS_obtenir_position_max_dbl.

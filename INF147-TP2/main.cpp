@@ -31,9 +31,9 @@ Ecrire description ici:
 #define PHASE_1   0
 #define PHASE_2   0
 #define PHASE_3   0
-#define PHASE_4   1
+#define PHASE_4   0
 #define PHASE_5   0
-#define PHASE_6   0
+#define PHASE_6   1
 
 /****************************************************************************************
 *                           DEFINTION DU PRGORAMME PRINCIPAL                            *
@@ -45,7 +45,7 @@ Ecrire description ici:
 	{
 
 		/* Espace brouillon */
-        test_OUTILS_tri_decroissant_etendu_dbl_uchar();
+        test_VIGENERE_remplir_table_vigenere();
 		system("pause");
 		return EXIT_SUCCESS;
 
