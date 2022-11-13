@@ -30,6 +30,7 @@ void OUTILS_afficher_tableau_1D_uchar(unsigned char* tableau, const unsigned int
 // Trouve l'indice de la plus grande valeur dans un tableau de rationnels.
 unsigned int OUTILS_obtenir_position_max_dbl(const double* tableau, const unsigned int taille_tableau)
 {
+	//position max recherchée
 	unsigned int i_max = 0;
 
 	for (int i = 0; i < taille_tableau - 1; i++)
