@@ -10,7 +10,7 @@
 
 #define ASCII_a 97			/* Code ASCII de la lettre a         */
 #define ASCII_z 122			/* Code ASCII de la lettre z         */
-#define TAILLE_ALPHABET 26	/* Nombre de lettres dans l'alphabet */
+#define TAILLE_ALPHABET 26		/* Nombre de lettres dans l'alphabet */
 
 /*****************************************************************************************
 *                                  FONCTIONS PUBLIQUES                                   *
