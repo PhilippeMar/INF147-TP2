@@ -22,6 +22,7 @@ void VIGENERE_remplir_table_vigenere(unsigned char[TAILLE_TABLE_VIGENERE][TAILLE
 {
 		for (int i = 0; i < TAILLE_TABLE_VIGENERE; i++)
 	{
+		//variable utiliser pour remplir le tableau apres la diagonale de z
 		int apres_z = 0;
 
 		for (int j = 0; j < TAILLE_TABLE_VIGENERE; j++)
@@ -64,10 +65,13 @@ void VIGENERE_encrypter(unsigned char* message,
 						unsigned char* cle,
 						const unsigned int taille_cle)
 {
+	//initialisation du tableau pour le chiffrement
 	unsigned char table_de_vigenere[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE];
 	VIGENERE_remplir_table_vigenere(table_de_vigenere);
 
 		int k = 0;
+		//compteur de lettre de la cle
+		//On réinitialise rendu au dernier charactère de la cle
 		int compte_lettre = 0;
 
 		while (k < taille_message)
@@ -91,10 +95,13 @@ void VIGENERE_decrypter(unsigned char* message,
 						unsigned char* cle,
 						const unsigned int taille_cle)
 {
+	//initialisation du tableau pour le chiffrement
 	unsigned char table_de_vigenere[TAILLE_TABLE_VIGENERE][TAILLE_TABLE_VIGENERE];
 	VIGENERE_remplir_table_vigenere(table_de_vigenere);
 
 	int k = 0;
+	//compteur de lettre de la cle
+	//On réinitialise rendu au dernier charactère de la cle
 	int compte_lettre = 0;
 
 	while (k < taille_messsage)
