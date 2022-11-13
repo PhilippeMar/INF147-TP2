@@ -200,7 +200,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 			}
 		}
 
-		// Boucle pour trouver la fréquence maximale
+		// Division par le nombre de lettre pour avoir un pourcentage
 		for (int j = 0; j < TAILLE_ALPHABET; j++)
 		{
 			frequence[j] /= nombre_lettre_frequence;
