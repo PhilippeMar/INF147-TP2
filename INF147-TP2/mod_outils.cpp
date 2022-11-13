@@ -79,7 +79,17 @@ void OUTILS_tri_decroissant_etendu_dbl_uchar(double* tableau_principal,
 											 unsigned char* tableau_secondaire,
 											 const unsigned int taille_tableaux)
 {
-	// TODO
+	for (unsigned int i = taille_tableaux; i >= 1; i--)
+	{
+		for (unsigned int j = 0; j < taille_tableaux - 1; j++)
+		{
+			if (tableau_principal[j + 1] > tableau_principal[j])
+			{
+				SWAP_DBL(tableau_principal[j], tableau_principal[j + 1]);
+				SWAP_DBL(tableau_secondaire[j], tableau_secondaire[j + 1]);
+			}
+		}
+	}
 }
 
 // Procedure de test pour OUTILS_tri_decroissant_etendu_dbl_uchar.
