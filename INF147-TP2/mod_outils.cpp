@@ -21,15 +21,24 @@ On y retrouve les sous-programmes suivants :
 void OUTILS_afficher_tableau_1D_uchar(unsigned char* tableau,
 									  const unsigned int taille_tableau)
 {
-	// TODO
+	for (unsigned int i = 0; i < taille_tableau; i++)
+		printf("%c ", tableau[i]);
+	printf("\n");
 }
 
 // Trouve l'indice de la plus grande valeur dans un tableau de rationnels.
 unsigned int OUTILS_obtenir_position_max_dbl(const double* tableau,
 											 const unsigned int taille)
 {
-	return 0;// Remove this
-	// TODO
+	unsigned int indice = 0;
+	for (unsigned int i = 1; i < taille; i++)
+	{
+		if (tableau[i] > tableau[indice])
+		{
+			indice = i;
+		}
+	}
+	return indice;
 }
 
 // Procedure de test pour OUTILS_obtenir_position_max_dbl.
@@ -52,7 +61,11 @@ void test_OUTILS_obtenir_position_max_dbl(void)
 // Cree une permutation aleatoire d'un tableau 1D avec l'algorithme de Fisher-Yates.
 void OUTILS_melanger(unsigned char* tableau, const unsigned int taille)
 {
-	// TODO
+	for (unsigned int i = taille - 1; i >= 1; i--)
+	{
+		unsigned int j = RANDBETWEEN(0, i);
+		SWAP_INT(tableau[i], tableau[j]);
+	}
 }
 
 // Trie deux tableaux en etendant le tri du premier aux elements du deuxieme.
