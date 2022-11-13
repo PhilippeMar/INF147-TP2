@@ -31,8 +31,8 @@ Ecrire description ici:
 #define PHASE_1   0
 #define PHASE_2   0
 #define PHASE_3   0
-#define PHASE_4   1
-#define PHASE_5   0
+#define PHASE_4   0
+#define PHASE_5   1
 #define PHASE_6   0
 
 /****************************************************************************************

@@ -72,7 +72,7 @@ void VIGENERE_encrypter(unsigned char*     message,
 	- Aucune.
 */
 void VIGENERE_decrypter(unsigned char*     message,
-						const unsigned int taille_messsage,
+						const unsigned int taille_message,
 						unsigned char*     cle,
 						const unsigned int taille_cle);
 
