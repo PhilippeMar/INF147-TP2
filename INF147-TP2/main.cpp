@@ -151,7 +151,7 @@ int main(void)
 	CRYPT_generer_cle(cle);
 
 	/* Cha�ne a encoder */
-	unsigned char message[] = "eCole de technoLogie superieure";
+	unsigned char message[] = "ecole de technoLogie superieure";
 	int taille = sizeof(message) / sizeof(char) - 1;
 
 	/* Afficher message original */
