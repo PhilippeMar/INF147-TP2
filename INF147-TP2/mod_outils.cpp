@@ -6,9 +6,15 @@ Auteurs :	Barry Lawson
 Date : Octobre 2022
 
 --Description
+	Ce module contient des outils utiliser pour les divers types d'encryption
 
 On y retrouve les sous-programmes suivants :
-	-
+	- OUTILS_afficher_tableau_1D_uchar
+	- OUTILS_obtenir_position_max_dbl
+	- test_OUTILS_obtenir_position_max_dbl
+	- OUTILS_melanger
+	- OUTILS_tri_decroissant_etendu_dbl_uchar
+	- test_OUTILS_tri_decroissant_etendu_dbl_uchar
 *****************************************************************************************/
 
 #include "mod_outils.h"

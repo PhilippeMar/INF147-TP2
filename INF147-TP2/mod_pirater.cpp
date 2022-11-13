@@ -6,9 +6,18 @@ Auteurs :	Barry Lawson
 Date : Octobre 2022
 
 --Description
+	Ce module est utilise pour pirater les divers type d'encryption
 
 On y retrouve les sous-programmes suivants :
-	-
+	- PIRATER_calculer_frequences
+	- test_PIRATER_calculer_frequences
+	- PIRATER_dechiffrer_cesar
+	- PIRATER_generer_alphabet_reference
+	- test_PIRATER_generer_alphabet_reference
+	- PIRATER_extraire_cle
+	- PIRATER_attaque_frequences
+	- PIRATER_permuter_lettres
+	- PIRATER_extraire_cle_vigenere
 *****************************************************************************************/
 
 #include "mod_pirater.h"
