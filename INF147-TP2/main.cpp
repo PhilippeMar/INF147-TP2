@@ -1,10 +1,21 @@
 /****************************************************************************************
 
-Auteur(e) :
-Derniere Modification :
-Fichier :
+Auteurs :	Barry Lawson
+			Philippe Marineau
+			Jean-Philippe Portant
+			Teano Rocha
+Date : Novembre  2022
 
-Ecrire description ici:
+Voici nos solutions pour les différents problèmes d'encryptions et de décryptions. 
+
+La phase 1 et 2 parcours le code de césar, qui consiste simplement à changer l'ordre de l'alphabet.
+
+La phase 3 et 4 parcours le chiffrement par substitution aléatoire basé sur le mélange Fisher-Yates.
+Celui-ci fait appel au hasard et à une cle d'encodage pour permettre un encryption plus fort que le code
+de césar. 
+
+La phase 5 et 6 parcours le chiffre de Vigenere (chiffrement polyalphabétique), qui utilise une table a deux
+dimension (table de Vigenere). Celui-ci utilise une combinaison du message et d'une cle pour l'encryption. 
 
 *****************************************************************************************/
 
