@@ -80,8 +80,8 @@ void OUTILS_melanger(unsigned char* tableau, const unsigned int taille)
 
 // Trie deux tableaux en etendant le tri du premier aux elements du deuxieme.
 void OUTILS_tri_decroissant_etendu_dbl_uchar(double* tableau_principal,
-	unsigned char* tableau_secondaire,
-	const unsigned int taille_tableaux)
+											unsigned char* tableau_secondaire,
+											const unsigned int taille_tableaux)
 {
 	for (unsigned int i = taille_tableaux; i >= 1; i--)
 	{
