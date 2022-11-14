@@ -3,7 +3,7 @@ Auteurs :	Barry Lawson
 			Philippe Marineau
 			Jean-Philippe Portant
 			Teano Rocha
-Date : Octobre 2022
+Date : Novembre 2022
 --Description
 	Ce module est utilise pour pirater les divers type d'encryption
 On y retrouve les sous-programmes suivants :
