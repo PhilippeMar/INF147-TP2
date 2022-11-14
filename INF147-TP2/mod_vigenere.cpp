@@ -3,7 +3,7 @@ Auteurs :	Barry Lawson
 			Philippe Marineau
 			Jean-Philippe Portant
 			Teano Rocha
-Date : Octobre 2022
+Date : Novembre 2022
 
 --Description
 	Ce fichier permet d'encrypter et decrypter par substitution polyalphabetique
