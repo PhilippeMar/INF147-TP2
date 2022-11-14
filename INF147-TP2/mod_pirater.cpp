@@ -188,7 +188,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 		//compte les lettres de la cle avant la réinitialisation
 		unsigned int nombre_lettre_total = 0;
 
-		// Calcul du tableau de fréquences 
+		// Calcul du nombre d'occurence de chaque lettre
 		for (int j = 0; j < taille_message; j++) {
 			if (isalpha(message[j]) != 0) {
 				if (nombre_lettre_total % taille_cle == 0)
@@ -200,7 +200,7 @@ void PIRATER_extraire_cle_vigenere(unsigned char* message,
 			}
 		}
 
-		// Division par le nombre de lettre pour avoir un pourcentage
+		// On divise par le nombre de lettre total pour avoir un pourcentage (une frequence) d'apparition
 		for (int j = 0; j < TAILLE_ALPHABET; j++)
 		{
 			frequence[j] /= nombre_lettre_frequence;
