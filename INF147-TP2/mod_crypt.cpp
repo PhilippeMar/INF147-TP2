@@ -34,7 +34,7 @@ void CRYPT_generer_alphabet(unsigned char* tab_alphabet)
 // Procedure de test pour CRYPT_GENERER_ALPHABET.
 void test_CRYPT_generer_alphabet(void)
 {
-
+	// Initialisation d'un tableau contenant l'alphabet
 	unsigned char tab_alphabet[TAILLE_ALPHABET];
 	CRYPT_generer_alphabet(tab_alphabet);
 
