@@ -3,7 +3,7 @@ Auteurs :	Barry Lawson
 			Philippe Marineau
 			Jean-Philippe Portant
 			Teano Rocha
-Date : Octobre 2022
+Date : Novembre 2022
 
 --Description
 	Ce module contient des outils utiliser pour les divers types d'encryption
