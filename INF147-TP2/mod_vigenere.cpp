@@ -28,6 +28,7 @@ void VIGENERE_remplir_table_vigenere(unsigned char table_vigenere[TAILLE_TABLE_V
     {
         for (int j = 0; j < TAILLE_TABLE_VIGENERE; j++) 
         {
+            // On s'assure d'etre entre ASCII_a et ASCII_z
             if (ASCII_a + i + j <= ASCII_z)
                 table_vigenere[i][j] = ASCII_a + i + j;
             else
@@ -66,6 +67,7 @@ void VIGENERE_encrypter(unsigned char* message,
     VIGENERE_remplir_table_vigenere(table_vigenere);
 
     int j = 0;
+    // Parcourir le message
     for (int i = 0; i < taille_message; i++)
     {
         // On encrypte seulement les charactere alphabetiques
@@ -95,6 +97,7 @@ void VIGENERE_decrypter(unsigned char* message,
     VIGENERE_remplir_table_vigenere(table_vigenere);
 
     int j = 0;
+    // Parcourir le message
     for (int i = 0; i < taille_messsage; i++)
     {
         // On decrypte seulement les charactere alphabetiques
@@ -103,7 +106,7 @@ void VIGENERE_decrypter(unsigned char* message,
             unsigned int pos_lettre_message;
             unsigned int pos_lettre_cle = cle[j] - ASCII_a;
 
-            // commentaire
+            // Condition pour recherche linéaire du caractère
             bool est_trouve = false;
             int k = 0;
             while (!est_trouve)
